@@ -1,0 +1,107 @@
+.nftsHero{
+  background-image: url(../../assets/newNfts/bg1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+  
+  .mt-custm-for-h1 {
+    margin-top: 13rem !important;
+  }
+  #slider {
+    position: relative;
+    width: 50%;
+    height: 30vw;
+    margin: 80px auto;
+    font-family: 'Helvetica Neue', sans-serif;
+    perspective: 880px;
+    transform-style: preserve-3d;
+  }
+  
+  input[type=radio] {
+    position: relative;
+    top: 108%;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    margin: 0 15px 0 0;
+    opacity: 0.4;
+    transform: translateX(-83px);
+    cursor: pointer;
+  }
+  
+  
+  input[type=radio] {
+    
+    display: none;
+  }
+  
+  input[type=radio]:checked {
+    opacity: 1;
+  } 
+  
+  
+  
+  
+  #slider label {
+    position: absolute;
+    /* width: 100%; */
+    height: 100%;
+    left: 0;
+    top: 0;
+    color: white;
+    font-size: 70px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 400ms ease;
+  }
+
+  .img-daimention{
+    width: 18.02rem;
+    height: 26.323125rem;
+  }
+  
+  
+  /* Slider Functionality */
+  
+  /* Active Slide */
+  #s1:hover ~ #slide1, #s2:hover ~ #slide2, #s3:hover ~ #slide3, #s4:hover ~ #slide4, #s5:hover ~ #slide5 {
+    transform: translate3d(0%, 0, 0px);
+  }
+  
+  /* Next Slide */
+  #s1:hover ~ #slide2, #s2:hover ~ #slide3, #s3:hover ~ #slide4, #s4:hover ~ #slide5, #s5:hover ~ #slide1 {
+    transform: translate3d(40%, 0, -100px);
+  }
+  
+  
+  /* Next to Next Slide */
+  #s1:hover ~ #slide3, #s2:hover ~ #slide4, #s3:hover ~ #slide5, #s4:hover ~ #slide1, #s5:hover ~ #slide2 {
+    transform: translate3d(80%, 0, -250px);
+  }
+  
+  /* Previous to Previous Slide */
+  #s1:hover ~ #slide4, #s2:hover ~ #slide5, #s3:hover ~ #slide1, #s4:hover ~ #slide2, #s5:hover ~ #slide3 {
+    transform: translate3d(-80%, 0, -250px);
+  }
+  
+  /* Previous Slide */
+  #s1:hover ~ #slide5, #s2:hover ~ #slide1, #s3:hover ~ #slide2, #s4:hover ~ #slide3, #s5:hover ~ #slide4 {
+    transform: translate3d(-40%, 0, -100px);
+  }
+
+
+  /* for 3 cards css */
+     /* #s1:hover ~ #slide1, #s2:checked ~ #slide2, #s3:checked ~ #slide3 {
+       transform: translate3d(0%, 0, 0px);
+     }
+     #s1:checked ~ #slide2, #s2:checked ~ #slide3, #s3:checked ~ #slide1 {
+       transform: translate3d(40%, 0, -100px);
+     }
+     #s1:checked ~ #slide3, #s2:checked ~ #slide1, #s3:checked ~ #slide2 {
+       transform: translate3d(-40%, 0, -100px);
+     } */

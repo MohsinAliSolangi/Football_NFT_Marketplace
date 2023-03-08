@@ -1,0 +1,44 @@
+.teamSec{
+background-image:url(../../assets/images/teambg1.svg);
+background-image:url(../../assets/images/teambg2.svg);
+
+
+background-repeat: no-repeat;
+/* object-fit: cover; */
+}
+.rowzindex{
+    z-index: 1;
+}
+
+.teamzindex{
+    z-index: 100;
+}
+.team-card{
+    background-color: #e2ccff;
+    position: relative;
+
+}
+
+.team-img{
+    width:200px;
+    height:250px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-img img{
+    width: 80%;
+    height: 110%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    border: 10px solid white;
+}
+.pillar{
+    height: 80px;
+    width: 8px;
+}
+
+
+/* #740ba6  */

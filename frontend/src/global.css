@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap");
+
+/* cd bazar-app
+npm start */
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+}
+
+:root {
+  --color-bg: #d5f1ff;
+  --color-bg-primary: #21022d;
+  --color-bg-sec: #ebf8ff;
+  --color-primary1: #0dcaf0;
+  --color-primary: #610083;
+  --color-bg-social: #25b6ff;
+  --color-blur: #dcdcdc;
+  --color-blur2: #f2f6f9;
+  --color-bluish-hr: #067272;
+  --color-white: white;
+  --color-light: #71626b;
+
+  --transition: all 1s ease;
+
+  --container-lg: 75%;
+  --container-md: 86%;
+  --container-sm: 90%;
+}
+
+/* .container1 {
+  margin-left: 4.5rem;
+  margin-right: 4.5rem;
+} */
+
+.container1 {
+  width: 90% !important;
+  margin: 0 auto;
+}
+
+.container2 {
+  width: 75% !important;
+  margin: 0 auto;
+}
+
+img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+  list-style: none;
+}
+body {
+  font-family: "Nunito", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.btn-info1 {
+  background-color: var(--color-primary) !important;
+}
+.btn-gradient {
+  background: linear-gradient(180deg, #620d92 0%, #3b43e2 100%) !important;
+}
+
+.text-info1 {
+  color: var(--color-primary) !important;
+}
+.border-primary1 {
+  border:1.7px solid var(--color-primary) !important;
+}
+.Bginfo {
+  background-color: var(--color-bg-sec) !important;
+}
+.Bgsecond {
+  background-color: #f0e2fa !important;
+}
+
+.bg-white {
+  background-color: white !important;
+}
+.bg-blur {
+  background-color: var(--color-blur);
+}
+.bg-blur2 {
+  background-color: var(--color-blur2);
+}
+
+.shadow1 {
+  box-shadow: 0px 2px 12px #c0bebe;
+}
+.h1-32 {
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 32px !important;
+  line-height: 140% !important;
+}
+.h1-36 {
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 36px !important;
+  line-height: 140% !important;
+}
+
+.h1-40 {
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 40px !important;
+  line-height: 56px !important;
+}
+.h1-56 {
+  font-style: normal !important;
+  font-weight: 900 !important;
+  font-size: 56px !important;
+  line-height: 84px !important;
+}
+.h1-28 {
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 28px !important;
+  line-height: 140% !important;
+}
+
+.p-16 {
+  margin-top: -10px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+}
+
+.p-20 {
+  margin-top: -10px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 140%;
+}
+.p-22px {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 28px;
+}
+.p-24 {
+  margin-top: -10px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 140%;
+}
+.p-22 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 140%;
+}
+.p-12 {
+  margin-top: -10px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+}
+.style1 {
+  border-top: 2px solid black;
+}

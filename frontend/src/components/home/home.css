@@ -1,0 +1,9 @@
+
+.section {
+ 
+  background-image: url(../../assets/images/bk1.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+

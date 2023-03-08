@@ -1,0 +1,15 @@
+
+.blue-color{
+    color: #CDA0FB;;
+  }
+  .btn-bg{
+    /* background-color: #610083 !important; */
+    background: linear-gradient(180deg, #470160 0%, #04020F 91.29%) !important;
+
+  }
+.rounded-top-5{
+  border-bottom-left-radius:0 !important;
+  border-bottom-left-radius:0 !important ;
+  border-top-left-radius: 25px !important ;
+  border-top-right-radius: 25px !important ;
+}

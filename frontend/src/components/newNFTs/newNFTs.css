@@ -1,0 +1,50 @@
+.newImg {
+  height: 420px;
+  overflow: hidden;
+  border-radius: 5%;
+  position: relative;
+  background-image: url(../../assets/images/new.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  justify-content: center;
+  animation: change 3s infinite;
+}
+
+@keyframes change {
+  0% {
+    background-image: url(../../assets/newNfts/new.png);
+  }
+  20% {
+    background-image: url(../../assets/newNfts/nft.png);
+  }
+  40% {
+    background-image: url(../../assets/newNfts/nft1.png);
+  }
+  60% {
+    background-image: url(../../assets/newNfts/nft2.png);
+  }
+  80% {
+    background-image: url(../../assets/newNfts/nft3.png);
+  }
+  100% {
+    background-image: url(../../assets/newNfts/nft4.png);
+  }
+}
+
+.timeBox {
+  width: auto;
+  height: 120px;
+  background: linear-gradient(180deg, #40005e 0%, #9b1ed6 100%);
+}
+.imgBox {
+  width: 80%;
+  position: absolute;
+  bottom: 6.5%;
+  left: 9.5%;
+  height: 73.85px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(25px);
+}
