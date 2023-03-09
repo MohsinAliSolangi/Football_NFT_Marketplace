@@ -22,7 +22,7 @@ export default function Home() {
                 harum, accusantium cupiditate quod libero, quidem vero suscipit!
               </p> */}
               <div className="buttons mt-5 ">
-                <button className="btn btn-gradient w-50 py-3 text-white fw-bold">
+                <button onClick={() => window.location.href=`/nfts/`} className="btn btn-gradient w-50 py-3 text-white fw-bold">
                   Explore
                 </button>
                 {/* <button className="btn btn-info1 btn-info-home  px-5 ms-5 text-white fw-bold">

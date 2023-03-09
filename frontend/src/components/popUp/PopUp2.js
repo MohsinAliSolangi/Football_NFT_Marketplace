@@ -15,7 +15,7 @@ function PopUp() {
               src={img1}
               style={iconSize}
               className="img-fluid fox me-4"
-              alt=""
+              alt="Hi"
             />
             <p className="p-22 mt-4 ">Transcation confirmed</p>
             <p className="p-18 text-center">

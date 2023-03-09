@@ -9,10 +9,7 @@ import FAQs from "./components/faqs/FAQs";
 import SellNFT from "./components/SellNFT";
 import NFTPage from "./components/NFTpage"
 
-
-
 function App() {
-
 
 return (
     <>
@@ -26,9 +23,9 @@ return (
           <Route path="/aboutSec" exact element={<AboutSec />} />
           <Route path="/faqs" exact element={<FAQs />} />
           <Route path="/admincontrol" exact element={<SellNFT />} />
+          <Route path="NFTpageCard/:item" element={<Pdetails />} />
         </Routes>
       </BrowserRouter>
-          {/* <Route path="nfts/:productId" element={<Pdetails />} /> */}
     </>
   );
 }

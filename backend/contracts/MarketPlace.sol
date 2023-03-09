@@ -307,7 +307,7 @@ contract MarketPlace is ReentrancyGuard {
         _auctionDetail[_nft][_tokenId].auction = false;
     }
 
-    function isAuction(
+    function    (
         address _nft,
         uint256 _tokenId
     ) public view returns (bool) {

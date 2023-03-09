@@ -6,7 +6,6 @@ import Navbar from "./components/navbar/Navbar";
 import Home from "./components/home/Home";
 import NewNFTs from "./components/newNFTs/NewNFTs";
 
-import Pdetails from "./components/productDetails/Pdetails";
 import PopUp from "./components/popUp/PopUp";
 import PopUp1 from "./components/popUp/PopUp1";
 import PopUp2 from "./components/popUp/PopUp2";
@@ -37,18 +36,16 @@ function MainComponents() {
       <SialStory />
       <NftsCard />
       <HowItWork />
-      {/* <Pdetails /> */}
       <Team />
       <FAQs />
       {/* <Bundle /> */}
       {/* <AboutUs />  */}
-      {/* <Pdetails /> */}
 
       {/* <Profile /> */}
-      {/* <PopUp />s */}
-      <PopUp1 />
-      <PopUp2 />
-      <Footer />
+      {/* <PopUp />  */}
+      {/* <PopUp1 /> */}
+      {/* <PopUp2 /> */}
+      <Footer />  
     </div>
   );
 }

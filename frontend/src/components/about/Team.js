@@ -1,8 +1,8 @@
 import "./aboutUs.css";
 import team2 from "../../assets/team/team2.jpg";
 import team1 from "../../assets/team/team1.png";
-import team3 from "../../assets/team/team3.webp";
-import team4 from "../../assets/team/team4.webp";
+import team3 from "../../assets/team/team3.jpeg";
+import team4 from "../../assets/team/team5.webp";
 import team5 from "../../assets/team/salah.jpg";
 import team6 from "../../assets/team/mudassir.jpg"
 import {
@@ -23,6 +23,9 @@ const cardSize = {
 };
 
 const teamData1 = [
+
+]
+const teamData = [
   {
     id: "1",
     teamImage: team5,
@@ -35,8 +38,6 @@ const teamData1 = [
     teamMemberName: "Arooba Ali",
     role: "Project Manager"
   },
-]
-const teamData = [
   {
     id: "1",
     teamImage: team6,
@@ -51,28 +52,17 @@ const teamData = [
   },
   {
     id: "3",
-    teamImage: team1,
-    teamMemberName: "Salahuddin Khawaja",
-    role: "Crypto expert"
+    teamImage: team3,
+    teamMemberName: "Mohsin Ali",
+    role: "Blockchain Developer"
   },
   {
     id: "4",
-    teamImage: team1,
-    teamMemberName: "Salahuddin Khawaja",
-    role: "Crypto expert"
+    teamImage: team4,
+    teamMemberName: "Usama Ali",
+    role: "Blockchain Developer"
   },
-  {
-    id: "5",
-    teamImage: team1,
-    teamMemberName: "Salahuddin Khawaja",
-    role: "Crypto expert"
-  },
-  {
-    id: "6",
-    teamImage: team1,
-    teamMemberName: "Salahuddin Khawaja",
-    role: "Crypto expert"
-  },
+
 ]
 
 function Team() {

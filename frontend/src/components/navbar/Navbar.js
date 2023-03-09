@@ -174,7 +174,7 @@ function Navbar() {
                     className="nav-link active p-22px"
                     aria-current="page"
                   >
-                    Nfts
+                    MarketPlace
                   </Link>
                 </li>
              
@@ -194,7 +194,7 @@ function Navbar() {
                     className="nav-link active p-22px"
                     aria-current="page"
                   >
-                     Mint NFT
+                     CreateYourNFT
                   </Link>
                 
                 </li>

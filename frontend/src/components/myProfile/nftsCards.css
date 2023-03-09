@@ -1,0 +1,115 @@
+.btn-today {
+  background-color: var(--color-blur);
+}
+
+.btn-today:hover {
+  color: white !important;
+  background-color: var(--color-primary);
+}
+.cHeight {
+  height: 270px !important;
+  width: 270px !important;
+  /* object-fit: cover !important; */
+  object-fit: cover !important;
+  background-position: none !important;
+  background-size: cover !important;
+}
+.card1:hover .cHeight {
+  height: 211px !important;
+  text-align: center;
+
+}
+
+.img1{
+  border-top-left-radius: 10px;
+  }
+  .img13{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    }
+.img2{
+  border-top-right-radius: 10px;
+
+}
+.img3{
+  border-bottom-left-radius: 10px;
+
+}
+.img4{
+  border-bottom-right-radius: 10px;
+
+}
+
+.card1 {
+  width: 290px !important;
+  border: 2px solid rgb(237, 232, 232) !important;
+  border-radius: 16px;
+}
+.card2 {
+  width: 290px !important;
+  border: 2px solid rgb(237, 232, 232) !important;
+  border-radius: 16px;
+}
+.card1:hover {
+  border: 2px solid var(--color-primary) !important;
+  border-radius: 16px;
+}
+
+.heart {
+  position: absolute;
+  top: 23px;
+  right: 23px;
+  background-color: white;
+  width: 48px;
+  height: 48px;
+}
+.card1 .height{
+  display: none !important;
+} .card1:hover .height{
+  display: flex !important;
+} 
+
+/* .height:hover{
+  display: block !important;
+} */
+/************************************ Media Queries ****************************************/
+
+/* 
+1267**4
+1266**3
+990**3
+989**2
+696**2
+695**1 
+*/
+
+@media (max-width: 1266px) {
+  .card1 {
+    width: 295px !important;
+  }
+  .cHeight {
+    height: 280px !important;
+    width: 280px !important;
+  }
+}
+@media (max-width: 989px) {
+  .card1 {
+    width: 325px !important;
+  }
+  .cHeight {
+    height: 310px !important;
+    width: 310px !important;
+    object-fit: cover !important;
+    background-position: none !important;
+    background-size: cover !important;
+  }
+}
+@media (max-width: 695px) {
+  .card1 {
+    width: 460px !important;
+  }
+  .cHeight {
+    height: 445px !important;
+    width: 445px !important;
+  }
+}

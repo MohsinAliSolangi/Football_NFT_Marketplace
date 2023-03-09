@@ -1,8 +1,7 @@
-// import Navbar from "./Navbar";
-import MarketplaceJSON from "../Marketplace.json";
+import Navbar from "./Navbar";
 import axios from "axios";
 import { useState } from "react";
-import NftsCard from "./nftsCards/NftsCard";
+
 
 export default function Marketplace() {
   const sampleData = [
@@ -83,13 +82,10 @@ export default function Marketplace() {
   console.log(data);
   return (
     <div>
-      {/* <Navbar></Navbar> */}
+      <Navbar></Navbar>
       <div className="flex flex-col place-items-center mt-20">
         <div className="md:text-xl font-bold text-white">Top NFTs</div>
         <div className="flex mt-5 justify-between flex-wrap max-w-screen-xl text-center">
-          {data.map((value, index) => {
-            return <NftsCard thedata={value} key={index}></NftsCard>;
-          })}
         </div>
       </div>
     </div>

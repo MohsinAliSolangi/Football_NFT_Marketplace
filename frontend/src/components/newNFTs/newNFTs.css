@@ -48,3 +48,9 @@
   border-radius: 12px;
   backdrop-filter: blur(25px);
 }
+.card-image{
+  width: 300px;
+}
+.nft-main-card{
+  margin-top: 20rem;
+}

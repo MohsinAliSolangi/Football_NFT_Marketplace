@@ -12,7 +12,7 @@ import img from "../../assets/images/profileH.png";
 import img1 from "../../assets/images/new.png";
 import img2 from "../../assets/images/share.svg";
 import NftsCard from "../nftsCards/NftsCard";
-import ProfileCard from "../../components/nftsCards/ProfileCard";
+import ProfileCard from "./ProfileCard";
 
 const imgSize = {
   width: "170px",
@@ -65,7 +65,7 @@ export default function Profile({account}) {
 
           const uri = await (await SetTransactionSigner()?.tokenURI(i))
           // use uri to fetch the nft metadata stored on ipfs 
-          console.log("&&&&&&&&",uri);       
+          console.log("&&&&&&&&",uri);
           const response = await fetch(uri)
           const metadata = await response.json()
           // get Royality fees 
@@ -134,19 +134,11 @@ console.log("my nfts",purchases);
               href=""
               className="p-22 text-black text-text-decoration-underline "
             >
-              Owned
-            </a>
-            <a href="" className="p-22 text-black text-decoration-none ">
-              Owned
-            </a>
-            <a href="" className="p-22 text-black text-decoration-none ">
-              Owned
+              Owned By You
             </a>
           </div>
         </div>
-        <div className="row d-flex justify-content-evenly my-4">
-          <h1 className="h1-28">My NFTs for listed </h1>
-          {/* <NftsCard /> */}
+        <div className="col d-flex justify-content-evenly my-4">
           {purchases.map((value, index) => {
              return <ProfileCard thedata={value} key={index}></ProfileCard>;
           })}
