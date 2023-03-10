@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom"
 import Countdown from 'react-countdown'
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { ethers } from "ethers";
+import { ethers, utils } from "ethers";
 import marketPlaceAddress from "../../contractsData/MarketPlace-address.json"
 import marketplaceAbi from "../../contractsData/MarketPlace.json"
 import TokenAddress from "../../contractsData/Token-address.json"
@@ -254,7 +254,7 @@ export default function Pdetails() {
 
 
 
-  console.log("myArray", myArray)
+  console.log("offerAmount", parseInt(offerAmount.amount))
   return (
     <>
       <section className="container1 pdetails py-5">
@@ -310,6 +310,14 @@ export default function Pdetails() {
                 </div>
                 : <></>
               }
+
+              {parseInt(offerAmount.amount) > 0 ?
+                <div className="ms-5 ">
+                  <h1 className="h1-28"> ETH: {parseInt(offerAmount.amount)}</h1>
+                  <p className="p-16 pb-2"> Address: {offerAmount.buyer}</p>
+                </div>
+                : <></>
+              }
             </div>
             {myArray.time > 0
               ?
@@ -338,18 +346,28 @@ export default function Pdetails() {
                   </div>
                   :
                   account?.toString().toLowerCase() !== myArray.seller?.toString().toLowerCase()
-                    ? <div>
+                    ? <>
+                    <hr />
+                    <div>
                       <button className="btn btn-info1 text-white w-75 btn-lg " > Auction has Ended </button>
                     </div>
+                    </>
 
                     : bid > 0 ?
-                      <div className='d-grid'>
-                        <button className="btn btn-info1 text-white w-75 btn-lg "> Auction has Ended </button>
-                      </div>
+                      <>
+                        <hr />
+                        <div className='d-grid'>
+
+                          <button className="btn btn-info1 text-white w-75 btn-lg "> Auction has Ended </button>
+                        </div>
+                      </>
                       :
+                      <>
+                      <hr/>
                       <div className='d-grid'>
                         <button onClick={() => cancellAuction()} className="btn btn-info1 text-white w-75 btn-lg " > Take your NFT </button>
                       </div>
+                      </>
 
               : account?.toString().toLowerCase() === myArray.seller?.toString().toLowerCase()
                 ? <>
@@ -360,10 +378,16 @@ export default function Pdetails() {
 
                   {offerAmount.amount > 0
                     ? <div style={{ marginTop: "10px" }} className='d-grid'>
+
+
+
+
                       <Button onClick={() => acceptOffer()} className="btn btn-info1 text-white w-75 btn-lg ">
                         Accept Offer
                       </Button>
+
                     </div>
+
                     : <></>
                   }
                 </>

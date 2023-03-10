@@ -2,7 +2,7 @@ import React from 'react'
 import Footer from "./components/footer/Footer"
 import Navbar from "./components/navbar/Navbar";
 // import AboutUs from "./components/About/AboutUs";
-
+import Pdetails from './components/productDetails/Pdetails';
 import Home from "./components/home/Home";
 import NewNFTs from "./components/newNFTs/NewNFTs";
 
@@ -35,6 +35,7 @@ function MainComponents() {
       <Sialkot />
       <SialStory />
       <NftsCard />
+      {/* <Pdetails/> */}
       <HowItWork />
       <Team />
       <FAQs />

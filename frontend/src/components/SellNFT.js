@@ -16,8 +16,6 @@ export default function SellNFT() {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate();
 
-
-
   async function OnChangeFile(e) {
     var file = e.target.files[0];
 
@@ -25,8 +23,10 @@ export default function SellNFT() {
     if (typeof file !== 'undefined') {
       try {
         setLoading(true)
+        console.log("this is image file ", file);
         const resut = await uploadFileToIPFS(file);
-        //const result = await client.add(file)    
+        //const result = await client.add(file)
+        console.log("!!!!!!!!!!!!!!!!!!",resut)
         setImage(resut.pinataURL);
         setLoading(false)
       } catch (error) {
@@ -39,6 +39,10 @@ export default function SellNFT() {
 
   const createNFT = async () => {
 
+
+    console.log("this is image????????????? ", image);
+    console.log("this is name ", name);
+    console.log("this is description ", description);
 
     if (!image || !name || !description) return
     //let temp = image.("https://gateway.pinata.cloud/ipfs/").replace("https://gateway.pinata.cloud/ipfs/");
@@ -62,6 +66,7 @@ export default function SellNFT() {
      setName("")
      setDescription("")
     //  setRoyality("")
+    //  navigate('/my-purchases')
       setLoading(false)
     } catch (error) {
       setLoading(false)
@@ -69,6 +74,7 @@ export default function SellNFT() {
       console.log("ipfs uri upload error: ", error)
     }
   }
+
 
   const mintThenList = async (result) => {
     try {
@@ -93,7 +99,7 @@ export default function SellNFT() {
     }
   }
 
-
+console.log("thIS IS image",image)
   return (
     <div className="container1">
 

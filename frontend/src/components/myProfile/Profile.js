@@ -6,6 +6,7 @@ import { useLocation, useParams } from "react-router-dom";
 import NFTAddress from "../../contractsData/NFT-address.json";
 import NFTAbi from "../../contractsData/NFT.json"
 import marketPlaceAddress from "../../contractsData/MarketPlace-address.json"
+import marketplaceAbi from "../../contractsData/MarketPlace.json"
 import axios from "axios";
 import NFTTile from "../NFTTile";
 import img from "../../assets/images/profileH.png";
@@ -34,6 +35,16 @@ const SetTransactionSigner = ()=>{
   const signer = provider.getSigner()
   const nft = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer)
   return nft
+ 
+}
+
+const marketplace = ()=>{
+  //Get provider from Metamask
+  const provider = new ethers.providers.Web3Provider(window.ethereum)
+  // Set signer
+  const signer = provider.getSigner()
+  const marketplace = new ethers.Contract(marketPlaceAddress.address, marketplaceAbi.abi, signer)
+  return marketplace
  
 }
 
@@ -83,9 +94,8 @@ export default function Profile() {
      for (let i = 0; i<tokenCount; i++) {
        const ownerof = await SetTransactionSigner().ownerOf(i)
        const getApproved = await SetTransactionSigner().getApproved(i)
-       console.log("getApproved",getApproved,i)
-       if (account?.toString().toLowerCase() === ownerof?.toString().toLowerCase()) {
-          const uri = await (await SetTransactionSigner()?.tokenURI(i))
+  if (account?.toString().toLowerCase() === ownerof?.toString().toLowerCase() && getApproved?.toString().toLowerCase()==="0x0000000000000000000000000000000000000000") {
+        const uri = await (await SetTransactionSigner()?.tokenURI(i))
          // use uri to fetch the nft metadata stored on ipfs 
           console.log("&&&&&&&&",uri);
           if(uri.slice(uri.length - 4) == "json") {  

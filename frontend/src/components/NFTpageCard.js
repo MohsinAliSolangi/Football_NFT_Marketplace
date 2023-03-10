@@ -44,15 +44,6 @@ function NFTpageCard({ item, idx }) {
 
 
 
-
-
-
-
-
-
-
-
-
 const isAuction= async() =>{
   console.log("Cheekssss") 
   let auction = await SetTransactionSigner().isAuction(item.nftContract,item.TokenId);

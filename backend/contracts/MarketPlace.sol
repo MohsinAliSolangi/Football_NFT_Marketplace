@@ -341,6 +341,7 @@ contract MarketPlace is ReentrancyGuard {
         Items.cancelListing = true;
         Items.listed = false;
         listing[_nft][_tokenId] = Items;
+         remove(_nft,_tokenId);
     }
 
     function getHighestBid(
@@ -386,6 +387,7 @@ contract MarketPlace is ReentrancyGuard {
         );
         totalAuctionSale++;
         listing[_nft][_tokenId] = Item;
+         remove(_nft,_tokenId);
         emit ItemBought(msg.sender, _nft, _tokenId, auction.highestBid);
     }
     function getCollectionLength() public view returns(uint256) {
