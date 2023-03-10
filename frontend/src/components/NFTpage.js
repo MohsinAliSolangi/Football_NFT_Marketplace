@@ -25,9 +25,8 @@ const SetTransactionSigner = ()=>{
 
 const { ethereum } = window;
 export default function NFTPage() {
-
 let data = useParams();
-console.log("data",data.productId);
+
   // const [data, updateData] = useState({});
   const [dataFetched, updateDataFetched] = useState(false);
   const [message, updateMessage] = useState("");
@@ -50,9 +49,9 @@ console.log("data",data.productId);
 
   const getCollection = async()=>{
     console.log("%%%%%%%%%%%%%%%",data.productId);
-     const getNftId = await SetTransactionSigner().getCollectionNFTs(data.productId);
+    const getNftId = await SetTransactionSigner().getCollectionNFTs(data.productId);
     let items = []
-    let image;
+
     
     for (let i=0; i<getNftId.length; i++){
        const auction = await SetTransactionSigner()?.isAuction(data.productId,getNftId[i])
@@ -65,16 +64,33 @@ console.log("data",data.productId);
       if(tokenuri.slice(tokenuri.length - 4) == "json") {  
         const response = await fetch(tokenuri)
         const metadata = await response.json()
-        image = metadata?.image;
+        
+     
+        if (!getNFTs.sale) {         
+          items.push({
+            auction: auction,
+            time: temp,
+            totalPrice: getNFTs.price,
+            seller: getNFTs.seller,
+            startTime:getNFTs.startTime,
+            endTime: getNFTs.endTime,
+            cancelListing: getNFTs.cancelListing,
+            sale: getNFTs.sale,
+            listed: getNFTs.listed,
+            TokenId: getNftId[i],
+            nftContract: data.productId,
+            tokenUri: metadata?.image,
+            description: metadata?.description,
+            name: metadata?.name,
+            attributes:metadata?.attributes
+          })
+      } 
       
       }else {
-        const link =  `https://gateway.pinata.cloud/ipfs/${tokenuri.slice(tokenuri.length - 46)}`;
+        const link =  `https://ipfs.io/ipfs/${tokenuri.slice(tokenuri.length - 46)}`;
         const response = await fetch(link)
         console.log("++++++++++",response)
-        const metadata = await response?.json()
-        image = metadata?.image;
-      }
-      
+        const metadata = await response?.json()  
       if (!getNFTs.sale) {         
           items.push({
             auction: auction,
@@ -88,9 +104,13 @@ console.log("data",data.productId);
             listed: getNFTs.listed,
             TokenId: getNftId[i],
             nftContract: data.productId,
-            tokenUri: image
+            tokenUri: metadata?.image,
+            description: metadata?.description,
+            name: metadata?.name,
+            attributes:metadata?.attributes
           })
       } 
+    }
     }
     console.log("Items",Items);
     setItems(items)   

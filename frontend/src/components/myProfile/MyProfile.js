@@ -5,11 +5,12 @@ import Navbar from "../navbar/Navbar";
 import Profile from "./Profile";
 
 function MyProfile() {
-  const location = useLocation();
+  // const location = useLocation();
+  // console.log("CHEEEEEK",location)
   return (
     <div className=" pt-5">
       <Navbar />
-      <Profile account = {location?.state} />
+      <Profile />
       <Footer />
     </div>
   );

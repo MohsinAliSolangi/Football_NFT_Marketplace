@@ -39,29 +39,13 @@ const SetTransactionSigner = ()=>{
   return nft
  }
 function NftsCard({ thedata,key }) {
-  const[image, setimage]= useState([]);
   const [Auction, setAuction] = useState(false)
   const [model, setModel] = useState(false)
   const [price, setPrice] = useState(null);
   const [time, setTime] = useState(null);
 
 
-  //this is get nft function 
-  const getImages = async()=>{
-    const uri = await thedata?.image;
-    if(uri.slice(uri.length - 4) == "json") {  
-      const response = await fetch(uri)
-      const metadata = await response.json()
-      console.log("metadata",metadata.image);
-      setimage(metadata?.image)
-    }else {
-      const link =  `https://ipfs.io/ipfs/${uri.slice(uri.length - 46)}`;
-      const response = await fetch(link)
-      console.log("++++++++++",response)
-  setimage(response.url)
-  console.log("metadata",response);
-}
-}
+
 
 
 
@@ -84,12 +68,7 @@ const createAuction= async()=>{
   setAuction(false)
 }
 
-
 console.log("thedata",thedata)
-useEffect(()=>{
-  getImages();
-},[])
-
   return (
     <>
       <div className="container1 mt-5 mb-4">

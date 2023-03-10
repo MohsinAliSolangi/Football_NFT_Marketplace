@@ -12,6 +12,8 @@
     "ethers": "^5.7.2",
     "materialize-css": "^1.0.0-rc.2",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.7.2",
+    "react-countdown": "^2.3.5",
     "react-dom": "^18.2.0",
     "react-icon": "^1.0.0",
     "react-icons": "^4.4.0",

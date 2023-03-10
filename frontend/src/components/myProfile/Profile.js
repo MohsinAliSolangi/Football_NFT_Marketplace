@@ -32,8 +32,8 @@ const SetTransactionSigner = ()=>{
   const provider = new ethers.providers.Web3Provider(window.ethereum)
   // Set signer
   const signer = provider.getSigner()
-  const marketplace = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer)
-  return marketplace
+  const nft = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer)
+  return nft
  
 }
 
@@ -43,7 +43,8 @@ const SetTransactionSigner = ()=>{
 
 
 
-export default function Profile({account}) {
+const { ethereum } = window;
+export default function Profile() {
   const [data, updateData] = useState([]);
   const [dataFetched, updateFetched] = useState(false);
   const [address, updateAddress] = useState("0x");
@@ -53,20 +54,62 @@ export default function Profile({account}) {
   const [Bid, setBid] = useState(true);
   const [purchases, setPurchases] = useState([])
   const [chainId,setChainId] = useState()
+  const [account, setAccount] = useState(null)
+
+
+
+
+
+
+  const checkIsWalletConnected = async () => {  
+    try {
+      if (!ethereum) return alert("please install MetaMask");
+      const accounts = await ethereum.request({ method: "eth_accounts" });
+      if (accounts.length) {
+        setAccount(accounts[0]);
+      } else {
+        console.log("No account Found");
+      }
+    } catch (err) {
+
+      throw new Error("No ethereum Object");
+    }
+  }
  
   const loadPurchasedItems = async () => {
     try {
       const tokenCount = await SetTransactionSigner()._tokenIdCounter()
       let purchasedItem = [];
-      for (let i = 0; i<tokenCount; i++) {
-
-        const ownerof = await SetTransactionSigner().ownerOf(i)
-     if (account.toString().toLowerCase() == ownerof.toString().toLowerCase()) {
-
+     for (let i = 0; i<tokenCount; i++) {
+       const ownerof = await SetTransactionSigner().ownerOf(i)
+       const getApproved = await SetTransactionSigner().getApproved(i)
+       console.log("getApproved",getApproved,i)
+       if (account?.toString().toLowerCase() === ownerof?.toString().toLowerCase()) {
           const uri = await (await SetTransactionSigner()?.tokenURI(i))
-          // use uri to fetch the nft metadata stored on ipfs 
+         // use uri to fetch the nft metadata stored on ipfs 
           console.log("&&&&&&&&",uri);
-          const response = await fetch(uri)
+          if(uri.slice(uri.length - 4) == "json") {  
+            const response = await fetch(uri)
+            const metadata = await response.json()
+            // get Royality fees 
+            // const royality = await SetTransactionSigner().getRoyalityFees(i);
+            // const res = Number(royality.toString()) / 100
+            // define listed item object
+          purchasedItem.push({
+              nft: NFTAddress.address,
+              itemId: i,
+              marketplace: marketPlaceAddress.address,
+              name: metadata.name,
+              description: metadata.description,
+              image: metadata.image,
+              // Royality: res
+            }
+            )
+          
+          }else {
+            const link =  `https://ipfs.io/ipfs/${uri.slice(uri.length - 46)}`;
+            const response = await fetch(link)
+            console.log("++++++++++",response)
           const metadata = await response.json()
           // get Royality fees 
           // const royality = await SetTransactionSigner().getRoyalityFees(i);
@@ -83,6 +126,7 @@ export default function Profile({account}) {
           })
         }
       }
+    }
       console.log("purchasedItem",purchasedItem)
       setPurchases(purchasedItem)
       setLoading(false)
@@ -94,15 +138,15 @@ export default function Profile({account}) {
   }
 
   useEffect(() => {
+    checkIsWalletConnected()
     loadPurchasedItems();
-    console.log("this is ")
-   },[])
+   },[account])
 
 
   // const params = useParams();
   // const tokenId = params.tokenId;
   // if (!dataFetched) getNFTData(tokenId);
-console.log("my nfts",purchases);
+
   return (
     <div className="profile h-auto m">
       <div className="container-fluid px-0">

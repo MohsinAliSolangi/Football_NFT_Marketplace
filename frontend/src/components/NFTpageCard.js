@@ -64,14 +64,14 @@ const isAuction= async() =>{
   useEffect(()=>{
     isAuction();
   },[])
-
+  console.log("itemitemitem",item)
   return (    
    <div className="container1 mt-5 mb-4">
    <div className="col flex-wrap justify-content-evenly">
          <div
            className="card1 border  card col-lg-3 col-md-3 col-sm-4 p-2 my-2 d-flex flex-column justify-content-center align-items-center "
          >
-           <div>
+           <div >
              <div className="heart d-flex flex-column align-items-center justify-content-center rounded-3">
                <img src={img} style={imgSize} alt="" />
              </div>
@@ -94,15 +94,15 @@ const isAuction= async() =>{
              </div>
              <div className="d-flex justify-content-between bg-secondary p-1 m-0 bg-opacity-25 rounded-2">
                <div>
-                 <p className="p-16 mt-0">{0x0}</p>
+                 <p className="p-16 mt-0">{item.TokenId.toString()}</p>
                </div>
                <div>
            <div className="d-flex">
                    {<ImDiamonds />}
-                   <p className="p-16 mt-0"> {100}</p>
+                   <p className="p-16 mt-0"> {item.totalPrice.toString()}</p>
            </div>
                  <div>
-                   <p className="text-end p-12">$: {0x0}</p>
+                   <p className="text-end p-12">$: {item.totalPrice.toString()  }</p>
                  </div>
                </div>
              </div>

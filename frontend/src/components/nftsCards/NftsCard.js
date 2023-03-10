@@ -25,7 +25,7 @@ const SetTransactionSigner = ()=>{
   return marketplace
 }
 
-function NftsCard({ thedata }) {
+function NftsCard({ account }) {
   const [loding, setloding] = useState(false)
   const [collection, setcollection] = useState([])
 
@@ -54,7 +54,6 @@ useEffect(()=>{
 },[collection])
 
 
-console.log("collection",collection)
 
   return (
 
