@@ -62,7 +62,7 @@ export default function Pdetails() {
       await SetTransactionSigner().buyItem(myArray.nftContract, id, { value: myArray.totalPrice });
       alert("congrates you Buy NFT")
       setLoading(false)
-      navigate("./NFTpageCard")
+      navigate("/nfts")
     } catch (error) {
       setLoading(false)
       console.log(error)      
@@ -213,7 +213,7 @@ export default function Pdetails() {
       const tokenid = await parseInt(myArray.TokenId.hex, 16)
       await (await SetTransactionSigner()?.concludeAuction(myArray.nftContract, tokenid, TokenAddress.address)).wait();
       setLoading(false)
-      navigate("./NFTpageCard")
+      navigate("/nfts")
 
     } catch (error) {
       setLoading(false)
@@ -229,7 +229,7 @@ export default function Pdetails() {
       await (await SetTransactionSigner()?.cancellAuction(myArray.nftContract, tokenid)).wait();
       console.log("SuccesscancellAuction");
       setLoading(false)
-      navigate("./NFTpageCard")
+      navigate("/nfts")
     } catch (error) {
       setLoading(false)
       console.log(error);
@@ -243,7 +243,7 @@ export default function Pdetails() {
       const tokenid = await parseInt(myArray.TokenId.hex, 16)
       await (await SetTransactionSigner()?.cancelListing(myArray.nftContract, tokenid)).wait();
       setLoading(false)
-      navigate("./NFTpageCard")
+      navigate("/nfts")
     } catch (error) {
       setLoading(false)
       console.log(error);
@@ -258,7 +258,7 @@ export default function Pdetails() {
       const tokenid = await parseInt(myArray.TokenId.hex, 16)
       await (await SetTransactionSigner()?.acceptOffer(myArray.nftContract, tokenid));
       setLoading(false)
-      navigate("./NFTpageCard")
+      navigate("/nfts")
     } catch (error) {
       setLoading(false)
       console.log("this is error")

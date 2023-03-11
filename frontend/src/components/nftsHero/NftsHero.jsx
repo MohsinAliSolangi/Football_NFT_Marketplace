@@ -12,7 +12,7 @@ function NftsHero() {
         <div className="row">
           <div className="col-lg-5 col-md-5 col-sm-12 col-12 d-flex align-items-center">
             <h1 className="h1-36 fw-bolder">
-              Hey Arooba, <br /> Want an NFT which is Exclusive, Affordable &
+              Hello, <br /> Want an NFT which is Exclusive, Affordable &
               Artistic?
               <span style={{ color: "#931acc" }}> GOTCHA!</span>
             </h1>
