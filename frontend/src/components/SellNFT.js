@@ -83,7 +83,6 @@ export default function SellNFT() {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       // updateMessage("Please wait..");
-      
       let contract = new ethers.Contract(
               nftAddr.address,
               nft.abi,
@@ -91,8 +90,10 @@ export default function SellNFT() {
             );
 
       await (await contract.safeMint(result.pinataURL)).wait()
-       alert("congrates you mint")
-
+      setName("")
+     setDescription("")
+     alert("congrates you mint")
+     navigate('/myProfile');
     } catch (error) {
       setLoading(false)
       console.log(error)

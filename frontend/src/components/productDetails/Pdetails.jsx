@@ -1,7 +1,7 @@
 import "./pdetails.css";
 import img2 from "../../assets/images/ball.png";
 import nftsCardsSectionData from "../../assets/data/nftsCardsSectionData";
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import Countdown from 'react-countdown'
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -36,6 +36,9 @@ export default function Pdetails() {
   const [offerAmount, setofferAmount] = useState(0);
   const [price, setPrice] = useState(null)
   const [offer, setOffer] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate();
+
 
 
   const checkIsWalletConnected = async () => {
@@ -53,9 +56,18 @@ export default function Pdetails() {
   }
 
   const buy = async () => {
-    let id = myArray.TokenId.hex.toString();
-    await SetTransactionSigner().buyItem(myArray.nftContract, id, { value: myArray.totalPrice });
-    alert("congrates you Buy NFT")
+    try {
+      setLoading(true)
+      let id = myArray.TokenId.hex.toString();
+      await SetTransactionSigner().buyItem(myArray.nftContract, id, { value: myArray.totalPrice });
+      alert("congrates you Buy NFT")
+      setLoading(false)
+      navigate("./NFTpageCard")
+    } catch (error) {
+      setLoading(false)
+      console.log(error)      
+    }
+   
   }
 
 
@@ -98,6 +110,7 @@ export default function Pdetails() {
   //this is set offer function call
   const makeOffers = async () => {
     try {
+      setLoading(true)
       const tokenid = await parseInt(myArray.TokenId.hex, 16)
       // get uri url from nft contract
       const provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -114,16 +127,24 @@ export default function Pdetails() {
           await (await token.approve(marketPlaceAddress.address, offer)).wait();
           await (await SetTransactionSigner().makeOffer(myArray.nftContract, tokenid, TokenAddress.address, offer)).wait();
           setOffer(false)
+        setLoading(false)
+        window.location.reload()
+
         }
         else {
           alert("please increse you offer");
+        setLoading(false)
+
         }
 
       } else {
         alert("You Dont Have Balance");
+        setLoading(false)
+
       }
     } catch (error) {
       setOffer(false)
+      setLoading(false)
       console.log("this is makeOffers error");
     }
   }
@@ -131,10 +152,13 @@ export default function Pdetails() {
 
   const itemOffer = async () => {
     try {
+      setLoading(true)
       const tokenid = await parseInt(myArray.TokenId.hex, 16)
       const offers = await SetTransactionSigner().makeoffer(myArray.nftContract, tokenid);
       setofferAmount(offers);
+      setLoading(false)
     } catch (error) {
+      setLoading(false)
       console.log("this is itemOffer error");
     }
   }
@@ -144,8 +168,8 @@ export default function Pdetails() {
   //this is bid function 
   const placeBid = async () => {
     try {
+      setLoading(true)
       const tokenid = await parseInt(myArray.TokenId.hex, 16)
-
       // get uri url from nft contract
       const provider = new ethers.providers.Web3Provider(window.ethereum)
       // Set signer
@@ -162,15 +186,21 @@ export default function Pdetails() {
           await (await SetTransactionSigner()?.bid(myArray.nftContract, tokenid, TokenAddress.address, bidding)).wait()
           console.log("success ");
           setmodal(false);
+      setLoading(false)
+      window.location.reload()
+
         }
         else {
           alert("please Increase Your Bid")
+      setLoading(false)
         }
       }
       else {
         alert("You Dont Have Balance")
+      setLoading(false)
       }
     } catch (error) {
+      setLoading(false)
       console.log(error);
     }
   }
@@ -179,9 +209,14 @@ export default function Pdetails() {
 
   const concludeAuction = async () => {
     try {
+      setLoading(true)
       const tokenid = await parseInt(myArray.TokenId.hex, 16)
       await (await SetTransactionSigner()?.concludeAuction(myArray.nftContract, tokenid, TokenAddress.address)).wait();
+      setLoading(false)
+      navigate("./NFTpageCard")
+
     } catch (error) {
+      setLoading(false)
       console.log(error);
     }
   }
@@ -189,19 +224,28 @@ export default function Pdetails() {
 
   const cancellAuction = async () => {
     try {
+      setLoading(true)
       const tokenid = await parseInt(myArray.TokenId.hex, 16)
       await (await SetTransactionSigner()?.cancellAuction(myArray.nftContract, tokenid)).wait();
       console.log("SuccesscancellAuction");
+      setLoading(false)
+      navigate("./NFTpageCard")
     } catch (error) {
+      setLoading(false)
       console.log(error);
     }
   }
 
   const CancelListing = async () => {
     try {
+      setLoading(true)
+
       const tokenid = await parseInt(myArray.TokenId.hex, 16)
       await (await SetTransactionSigner()?.cancelListing(myArray.nftContract, tokenid)).wait();
+      setLoading(false)
+      navigate("./NFTpageCard")
     } catch (error) {
+      setLoading(false)
       console.log(error);
     }
   }
@@ -209,9 +253,14 @@ export default function Pdetails() {
 
   const acceptOffer = async () => {
     try {
+      setLoading(true)
+
       const tokenid = await parseInt(myArray.TokenId.hex, 16)
       await (await SetTransactionSigner()?.acceptOffer(myArray.nftContract, tokenid));
+      setLoading(false)
+      navigate("./NFTpageCard")
     } catch (error) {
+      setLoading(false)
       console.log("this is error")
     }
   }
@@ -336,13 +385,13 @@ export default function Pdetails() {
                     <h1 className="h1-28">
                       {<Countdown date={Time * 1000} renderer={renderer} />}</h1>
                     <hr />
-                    <button onClick={() => setmodal(true)} className="btn btn-info1 text-white w-75 btn-lg " > Place Bid </button>
+                    <button onClick={() => setmodal(true)} disabled = {loading} className="btn btn-info1 text-white w-75 btn-lg " > Place Bid </button>
                   </div>
                 :
                 bid > 0 && bidder?.toString().toLowerCase() === account?.toString().toLowerCase()
                   ?
                   <div >
-                    <button onClick={() => concludeAuction()} className="btn btn-info1 text-white w-75 btn-lg " > GET NFT </button>
+                    <button onClick={() => concludeAuction()} disabled = {loading} className="btn btn-info1 text-white w-75 btn-lg " > GET NFT </button>
                   </div>
                   :
                   account?.toString().toLowerCase() !== myArray.seller?.toString().toLowerCase()
@@ -365,14 +414,14 @@ export default function Pdetails() {
                       <>
                       <hr/>
                       <div className='d-grid'>
-                        <button onClick={() => cancellAuction()} className="btn btn-info1 text-white w-75 btn-lg " > Take your NFT </button>
+                        <button onClick={() => cancellAuction()}  disabled = {loading} className="btn btn-info1 text-white w-75 btn-lg " > Take your NFT </button>
                       </div>
                       </>
 
               : account?.toString().toLowerCase() === myArray.seller?.toString().toLowerCase()
                 ? <>
                   <hr />
-                  <button onClick={() => CancelListing()} className="btn btn-info1 text-white w-75 btn-lg ">
+                  <button onClick={() => CancelListing()} disabled = {loading} className="btn btn-info1 text-white w-75 btn-lg ">
                     Cancel Listing
                   </button>
 
@@ -382,7 +431,7 @@ export default function Pdetails() {
 
 
 
-                      <Button onClick={() => acceptOffer()} className="btn btn-info1 text-white w-75 btn-lg ">
+                      <Button onClick={() => acceptOffer()} disabled = {loading} className="btn btn-info1 text-white w-75 btn-lg ">
                         Accept Offer
                       </Button>
 
@@ -394,11 +443,11 @@ export default function Pdetails() {
                 :
                 <>
                   <hr />
-                  <button onClick={() => buy()} className="btn btn-info1 text-white w-75 btn-lg ">
+                  <button onClick={() => buy()} disabled = {loading} className="btn btn-info1 text-white w-75 btn-lg ">
                     Buy NFT
                   </button>
                   <div style={{ marginTop: "10px" }}>
-                    <button onClick={() => setOffer(true)} className="btn btn-info1 text-white w-75 btn-lg ">
+                    <button onClick={() => setOffer(true)} disabled = {loading} className="btn btn-info1 text-white w-75 btn-lg ">
                       Make Offer
                     </button>
                   </div>
@@ -449,7 +498,7 @@ export default function Pdetails() {
                   onChange={(e) => setPrice(e.target.value)}></input>
               </div>
               <div>
-                <Button onClick={() => placeBid()} style={{ marginLeft: "200px", marginTop: "10px" }}> Submit </Button>
+                <Button onClick={() => placeBid()} disabled = {loading} style={{ marginLeft: "200px", marginTop: "10px" }}> Submit </Button>
               </div>
             </Row>
           </Form>
@@ -481,7 +530,7 @@ export default function Pdetails() {
                     onChange={(e) => setPrice(e.target.value)}></input>
                 </div>
                 <div>
-                  <Button type="button" onClick={() => { makeOffers(item) }} style={{ marginLeft: "200px", marginTop: "10px" }}  > Submit </Button>
+                  <Button type="button" onClick={() => { makeOffers(item) }} disabled = {loading} style={{ marginLeft: "200px", marginTop: "10px" }}  > Submit </Button>
                 </div>
               </Row>
             </Form>
