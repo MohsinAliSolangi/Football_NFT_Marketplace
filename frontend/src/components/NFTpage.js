@@ -48,14 +48,14 @@ let data = useParams();
   }
 
   const getCollection = async()=>{
-    console.log("%%%%%%%%%%%%%%%",data.productId);
+    // console.log("%%%%%%%%%%%%%%%",data.productId);
     const getNftId = await SetTransactionSigner().getCollectionNFTs(data.productId);
     let items = []
 
     
     for (let i=0; i<getNftId.length; i++){
        const auction = await SetTransactionSigner()?.isAuction(data.productId,getNftId[i])
-       console.log("this is nft ", auction)
+      //  console.log("this is nft ", auction)
         const time = await SetTransactionSigner()?.getLastTime(data.productId,getNftId[i])
         const temp = Number(time)
       const getNFTs = await SetTransactionSigner()?.listing(data.productId,getNftId[i])
@@ -89,7 +89,7 @@ let data = useParams();
       }else {
         const link =  `https://ipfs.io/ipfs/${tokenuri.slice(tokenuri.length - 46)}`;
         const response = await fetch(link)
-        console.log("++++++++++",response)
+        // console.log("++++++++++",response)
         const metadata = await response?.json()  
       if (!getNFTs.sale) {         
           items.push({
@@ -112,12 +112,12 @@ let data = useParams();
       } 
     }
     }
-    console.log("Items",Items);
+    // console.log("Items",Items);
     setItems(items)   
     setloding(true);
     }   
 
-console.log("mny nft ",Items)
+// console.log("mny nft ",Items)
     useEffect(()=>{
     // if(!loding)  {
     getCollection();

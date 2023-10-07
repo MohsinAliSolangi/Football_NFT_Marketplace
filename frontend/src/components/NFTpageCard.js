@@ -45,9 +45,9 @@ function NFTpageCard({ item, idx }) {
 
 
 const isAuction= async() =>{
-  console.log("Cheekssss") 
-  let auction = await SetTransactionSigner().isAuction(item.nftContract,item.TokenId);
- console.log("auction",auction) 
+  // console.log("Cheekssss") 
+  let auction = await SetTransactionSigner().isAuction(item?.nftContract,item?.TokenId);
+//  console.log("auction",auction) 
  setAcution(auction)  
 }
 
@@ -55,7 +55,7 @@ const isAuction= async() =>{
   useEffect(()=>{
     isAuction();
   },[])
-  console.log("itemitemitem",item)
+  // console.log("itemitemitem",item)
   return (    
    <div className="container1 mt-5 mb-4">
    <div className="col flex-wrap justify-content-evenly">

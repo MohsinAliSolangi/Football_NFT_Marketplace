@@ -38,10 +38,7 @@ function Navbar() {
   const [marketplace, setMarketplace] = useState({})
 
 
-  ethereum.on("accountsChanged", async (account) => {
-    setAccount(account[0]);
-    window.location.reload()
-  })
+
 
   const changeNetwork = async () => {
     try {
@@ -61,9 +58,7 @@ function Navbar() {
       console.log(err.message);
     }
   };
-  window.ethereum && ethereum.on("chainChanged", async () => {
-    window.location.reload();
-  });
+
 
   const checkIsWalletConnected = async () => {  
     try {
@@ -77,9 +72,18 @@ function Navbar() {
         const signer = provider.getSigner()
         loadContracts(signer)
       
-      } else {
+      } 
+      else {
         console.log("No account Found");
       }
+      ethereum.on("accountsChanged", async (account) => {
+        setAccount(account[0]);
+        window.location.reload()
+      })
+      window.ethereum && ethereum.on("chainChanged", async () => {
+        window.location.reload();
+      });
+
     } catch (err) {
 
       throw new Error("No ethereum Object");
@@ -94,7 +98,6 @@ function Navbar() {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     // Set signer
     const signer = provider.getSigner()
-  
     
     window.ethereum.on('chainChanged', (chainId) => {
       window.location.reload();
