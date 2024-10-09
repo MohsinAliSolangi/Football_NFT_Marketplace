@@ -48,6 +48,13 @@ The PakSial is a decentralized NFT_Marketplace application that enables users to
    ```bash
    npm run dev
    ```
-## Contact
-For any questions or inquiries, feel free to reach out to [Mohsin Ali Solangi] at [https://linktr.ee/mohsinalisolangi].
+## 🚀 Contact
+
+For any questions, feedback, or inquiries, feel free to reach out to **Mohsin Ali Solangi**. You can connect via the following platforms:
+
+🌐 **Linktree**: [Mohsin Ali Solangi](https://linktr.ee/mohsinalisolangi)
+
+🔗 **LinkedIn**: [Mohsin Ali Solangi](https://www.linkedin.com/in/mohsinalisolangi/)
+
+Looking forward to hearing from you! 😄
 ---
